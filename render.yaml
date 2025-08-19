@@ -1,0 +1,12 @@
+# Must be named render.yaml and live at the repo root.
+# Deploy via: Render Dashboard → New → Blueprint → pick this repo.
+services:
+  - type: web
+    name: json-maker
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
